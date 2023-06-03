@@ -33,36 +33,36 @@ public class PixelPropsUtils {
     private static final Map<String, Object> propsToChangePixel3XL;
 
     private static final String[] packagesToChange = {
-            "com.android.vending",
-            "com.breel.wallpapers20",
-            "com.google.android.apps.customization.pixel",
-            "com.google.android.apps.fitness",
-            "com.google.android.apps.recorder",
-            "com.google.android.apps.subscriptions.red",
-            "com.google.android.apps.tachyon",
-            "com.google.android.apps.turboadapter",
-            "com.google.android.apps.wallpaper.pixel",
-            "com.google.android.as",
-            "com.google.android.dialer",
-            "com.google.android.gms.location.history",
-            "com.google.android.inputmethod.latin",
-            "com.google.android.soundpicker",
-            "com.google.pixel.dynamicwallpapers",
-            "com.google.pixel.livewallpaper",
-            "com.google.android.apps.safetyhub",
-            "com.google.android.apps.turbo",
-            "com.google.android.apps.wallpaper",
-            "com.google.android.apps.maps",
-            "com.google.android.gms",
-            "com.google.android.apps.nexuslauncher"
+        "com.android.vending",
+        "com.breel.wallpapers20",
+        "com.google.android.apps.customization.pixel",
+        "com.google.android.apps.fitness",
+        "com.google.android.apps.recorder",
+        "com.google.android.apps.subscriptions.red",
+        "com.google.android.apps.tachyon",
+        "com.google.android.apps.turboadapter",
+        "com.google.android.apps.wallpaper.pixel",
+        "com.google.android.as",
+        "com.google.android.dialer",
+        "com.google.android.gms.location.history",
+        "com.google.android.inputmethod.latin",
+        "com.google.android.soundpicker",
+        "com.google.pixel.dynamicwallpapers",
+        "com.google.pixel.livewallpaper",
+        "com.google.android.apps.safetyhub",
+        "com.google.android.apps.turbo",
+        "com.google.android.apps.wallpaper",
+        "com.google.android.apps.maps",
+        "com.google.android.gms",
+        "com.google.android.apps.nexuslauncher"
     };
 
     private static final String[] packagesToChangePixelXL = {
-            "com.google.android.apps.photos"
+        "com.google.android.apps.photos"
     };
 
     private static final String[] packagesToChangePixel3XL = {
-            "com.google.android.googlequicksearchbox"
+        "com.google.android.googlequicksearchbox"
     };
 
     static {
@@ -92,48 +92,48 @@ public class PixelPropsUtils {
     }
 
     public static void setProps(String packageName) {
-        if (packageName == null){
+        if (packageName == null) {
             return;
         }
-        if (Arrays.asList(packagesToChange).contains(packageName)){
-            if (DEBUG){
+        if (Arrays.asList(packagesToChange).contains(packageName)) {
+            if (DEBUG) {
                 Log.d(TAG, "Defining props for: " + packageName);
             }
-            for (Map.Entry<String, Object> prop : propsToChange.entrySet()) {
+            for (Map.Entry<String, Object> prop: propsToChange.entrySet()) {
                 String key = prop.getKey();
                 Object value = prop.getValue();
                 setPropValue(key, value);
             }
         }
-        if (Arrays.asList(packagesToChangePixelXL).contains(packageName)){
-            if (DEBUG){
+        if (Arrays.asList(packagesToChangePixelXL).contains(packageName)) {
+            if (DEBUG) {
                 Log.d(TAG, "Defining props for: " + packageName);
             }
-            for (Map.Entry<String, Object> prop : propsToChangePixelXL.entrySet()) {
+            for (Map.Entry<String, Object> prop: propsToChangePixelXL.entrySet()) {
                 String key = prop.getKey();
                 Object value = prop.getValue();
                 setPropValue(key, value);
             }
         }
-        if (Arrays.asList(packagesToChangePixel3XL).contains(packageName)){
-            if (DEBUG){
+        if (Arrays.asList(packagesToChangePixel3XL).contains(packageName)) {
+            if (DEBUG) {
                 Log.d(TAG, "Defining props for: " + packageName);
             }
-            for (Map.Entry<String, Object> prop : propsToChangePixel3XL.entrySet()) {
+            for (Map.Entry<String, Object> prop: propsToChangePixel3XL.entrySet()) {
                 String key = prop.getKey();
                 Object value = prop.getValue();
                 setPropValue(key, value);
             }
         }
         // Set proper indexing fingerprint
-        if (packageName.equals("com.google.android.settings.intelligence")){
+        if (packageName.equals("com.google.android.settings.intelligence")) {
             setPropValue("FINGERPRINT", Build.DATE);
         }
     }
 
-    private static void setPropValue(String key, Object value){
+    private static void setPropValue(String key, Object value) {
         try {
-            if (DEBUG){
+            if (DEBUG) {
                 Log.d(TAG, "Defining prop " + key + " to " + value.toString());
             }
             Field field = Build.class.getDeclaredField(key);
